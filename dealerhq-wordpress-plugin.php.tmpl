@@ -1,0 +1,25 @@
+<?php
+/**
+ * Plugin Name:     DealerHQ Wordpress Plugin
+ * Description:     Integration with DealerHQ
+ * Text Domain:     dealerhq-wordpress-plugin
+ * Version:         0.1.0
+ * Author:          Broadlume, Inc.
+ * Author URI:      https://dealerhq.floorforce.com
+ *
+ * @package         DealerHQ_Wordpress_Plugin
+ */
+
+/**
+ * Adds analytics.js integration for visitor events, GTM, etc. Note, this is not deferred
+ */
+function dhq_setup_analytics() {
+	?>
+		<script src="${DHQ_ANALYTICS_SCRIPT}"></script>
+		<script>!function(a,e){if(a.__mosaic)a.console&&a.console.warn("mosaic already loaded");else{a.__mosaic={loaded:!0};var o=e.createElement("script");o.type="text/javascript",o.async=!0,o.src="https://cdn.dhq.technology/"+a.location.host+"/public/main.js",e.head.appendChild(o)}}(window,document);</script>
+	<?php
+}
+
+add_action( 'wp_head', 'dhq_setup_analytics', 1, 1 );
+
+# vi: ft=php
